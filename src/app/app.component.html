@@ -1,0 +1,118 @@
+<header-component [productsAnchor]="productsElement"></header-component>
+<section class="main" >
+  <div class="container main__container">
+    <div class="main__info">
+      <h1 class="main__title">Мягкие французские
+        пироженки Macaroons
+      </h1>
+      <div class="main__text">
+        Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
+      </div>
+      <div class="main__action">
+        <button class="btn main__btn" (click)="scrollTo(productsElement)">Выбрать макарун</button>
+      </div>
+    </div>
+    <div class="main__image">
+      <img src="../assets/images/box-macaroons.png" alt="Box of macaroons" class="main__image_img">
+    </div>
+  </div>
+</section>
+
+<section class="advantages" id="advantages">
+  <div class="container ">
+    <div class="advantages__container">
+      <div class="advantages__info">
+        <h2 class="advantages__title">
+          Мы печём для вас
+          вкуснейшие макаруны
+          уже более 10 лет
+        </h2>
+        <div class="advantages__text">
+          Все пироженки мы готовим только из натуральных и качественных продуктов, без
+          консервантов, ароматизаторов, красителей. Используем в приготовлении сливочное масло 82,5%, без
+          дрожжей,
+          маргарина, разрыхлителей и улучшителей муки.
+        </div>
+      </div>
+
+      <div class="advantages__image">
+        <img src="../assets/images/pink-macaroon.png" alt="Pink macaroon" class="advantages__image_img">
+      </div>
+    </div>
+    <div class="advantages__items">
+      <div class="advantages__item" *ngFor="let advantage of advantages">
+        <div class="advantages__item-circle"><span class="item-circle__number">{{advantage.id}}</span></div>
+        <div class="advantages__item-title">{{advantage.title}}</div>
+        <div class="advantages__item-text">{{advantage.description}}</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="products" #productsElement id="products">
+  <div class="container">
+    <h2 class="products__title">
+      Выберите свой макарун
+    </h2>
+    <div class="products__items">
+      <div class="product__item" *ngFor="let product of products; let i = index">
+        <div class="product__image">
+          <img src="../assets/images/products/{{product.img}}" alt="macaroon - {{i + 1}}" class="product__image_img">
+        </div>
+        <div class="product__name">{{product.title}}</div>
+        <div class="product__additional">
+          <div class="product__additional_text">
+            <div>1 шт.</div>
+            <div>{{product.price}} руб.</div>
+          </div>
+          <div class="product__additional_action">
+            <button class="btn product__btn" (click)="addToCard(product, orderElement)">Заказать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" #orderElement id="order">
+  <div class="container order__container">
+    <img src="../assets/images/strawberryL.png" alt="strawberry" class="order__strawberryL">
+    <img src="../assets/images/strawberryR.png" alt="strawberry" class="order__strawberryR">
+    <div class="order__image">
+      <img src="../assets/images/order-macaroons.png" alt="Column of macaroons" class="order__image_img">
+    </div>
+    <div class="order__main">
+      <h2 class="order__title">Закажите макарун!</h2>
+      <div class="order__text">
+        Выберите понравившийся макарун, заполните форму и ожидайте звонка нашего пекаря!
+      </div>
+
+      <div  class="order___form">
+        <div class="order___form_subtitle">Ваш выбор</div>
+        <div>
+          <input type="text" class="input" placeholder="Напишите, что хотите заказать..." [(ngModel)]="formValues.productTitle">
+        </div>
+
+        <div class="order___form_subtitle">Заполните данные для заказа</div>
+        <div class="order__inputs_wrap">
+          <input type="text" class="input" placeholder="Ваше имя" [(ngModel)]="formValues.name">
+        </div>
+        <div class="order__inputs_wrap">
+          <input type="text" class="input" placeholder="+375 (__) ___ - __ - __" [(ngModel)]="formValues.phone">
+        </div>
+
+        <button class="btn order__btn" >Оформить заказ</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<a href="#" class="present" *ngIf="showPresent">
+  <img src="../assets/images/present.png" alt="Present icon" class="present__img">
+  <div class="present__popup">
+    Оформите заказ
+    и получите подарок!
+  </div>
+</a>

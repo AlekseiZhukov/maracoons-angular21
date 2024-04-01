@@ -1,0 +1,59 @@
+.footer {
+  padding: 72px 0 62px 0;
+  background: #c0707c;
+}
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer__right_375 {
+  display: none;
+}
+.footer__right {
+  font-size: 12px;
+  font-family: Gilroy, sans-serif;
+  color: rgb(227, 172, 180);
+  margin-top: 19px;
+}
+.instagram__icon {
+  display: block;
+  text-decoration: snow;
+  text-align: center;
+}
+.instagram__icon_img {
+  vertical-align: middle;
+}
+.instagram__icon_text {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  margin-top: 15px;
+}
+@media screen and (max-width: 580px) {
+  .footer {
+    padding: 50px 0;
+  }
+  .footer__container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer__right {
+    display: none;
+  }
+  .footer__logo {
+    order: 1;
+  }
+  .footer__phone-number {
+    order: 2;
+  }
+  .footer__logo {
+    order: 3;
+  }
+  .footer__right_375 {
+    display: block;
+    order: 4;
+    margin: 0;
+  }
+}
+
