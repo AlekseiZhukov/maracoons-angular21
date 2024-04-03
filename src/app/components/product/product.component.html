@@ -1,0 +1,15 @@
+<div class="product__item" >
+  <div class="product__image">
+    <img src="../assets/images/products/{{product.img}}" alt="macaroon" class="product__image_img">
+  </div>
+  <div class="product__name">{{product.title}}</div>
+  <div class="product__additional">
+    <div class="product__additional_text">
+      <div>1 шт.</div>
+      <div>{{product.price | currency: 'RUB': 'руб.'}}</div>
+    </div>
+    <div class="product__additional_action">
+      <button class="btn product__btn" coolButton (click)="addProductToOrder()" >Заказать</button>
+    </div>
+  </div>
+</div>
