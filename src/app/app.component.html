@@ -1,4 +1,4 @@
-<header-component [productsAnchor]="productsElement"></header-component>
+<header-component [elements]="[productsElement, advantagesElement, orderElement]" [phone]="phone"></header-component>
 <section class="main" >
   <div class="container main__container">
     <div class="main__info">
@@ -9,7 +9,7 @@
         Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
       </div>
       <div class="main__action">
-        <button class="btn main__btn" (click)="scrollTo(productsElement)">Выбрать макарун</button>
+        <button class="btn main__btn" coolButton (click)="scrollTo(productsElement)">Выбрать макарун</button>
       </div>
     </div>
     <div class="main__image">
@@ -18,7 +18,7 @@
   </div>
 </section>
 
-<section class="advantages" id="advantages">
+<section class="advantages" #advantagesElement id="advantages">
   <div class="container ">
     <div class="advantages__container">
       <div class="advantages__info">
@@ -40,12 +40,7 @@
       </div>
     </div>
     <div class="advantages__items">
-      <div class="advantages__item" *ngFor="let advantage of advantages">
-        <div class="advantages__item-circle"><span class="item-circle__number">{{advantage.id}}</span></div>
-        <div class="advantages__item-title">{{advantage.title}}</div>
-        <div class="advantages__item-text">{{advantage.description}}</div>
-      </div>
-
+      <advantage-component *ngFor="let advantage of advantages" [advantage]="advantage"></advantage-component>
     </div>
   </div>
 </section>
@@ -56,21 +51,7 @@
       Выберите свой макарун
     </h2>
     <div class="products__items">
-      <div class="product__item" *ngFor="let product of products; let i = index">
-        <div class="product__image">
-          <img src="../assets/images/products/{{product.img}}" alt="macaroon - {{i + 1}}" class="product__image_img">
-        </div>
-        <div class="product__name">{{product.title}}</div>
-        <div class="product__additional">
-          <div class="product__additional_text">
-            <div>1 шт.</div>
-            <div>{{product.price}} руб.</div>
-          </div>
-          <div class="product__additional_action">
-            <button class="btn product__btn" (click)="addToCard(product, orderElement)">Заказать</button>
-          </div>
-        </div>
-      </div>
+      <product-component *ngFor="let product of products" [product]="product"  (addToOrderEvent)="addToCard($event, orderElement)"></product-component>
     </div>
   </div>
 </section>
@@ -102,17 +83,11 @@
           <input type="text" class="input" placeholder="+375 (__) ___ - __ - __" [(ngModel)]="formValues.phone">
         </div>
 
-        <button class="btn order__btn" >Оформить заказ</button>
+        <button class="btn order__btn" coolButton (click)="createOrder()">Оформить заказ</button>
       </div>
 
     </div>
   </div>
 </section>
-
-<a href="#" class="present" *ngIf="showPresent">
-  <img src="../assets/images/present.png" alt="Present icon" class="present__img">
-  <div class="present__popup">
-    Оформите заказ
-    и получите подарок!
-  </div>
-</a>
+<footer-component [phone]="phone"></footer-component>
+<cart-component *ngIf="showCart"></cart-component>

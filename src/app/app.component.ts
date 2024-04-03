@@ -1,16 +1,16 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AdvantageType} from "./types/advantage.type";
 import {ProductType} from "./types/product.type";
-import {ElementService} from "./services/element.service";
+import {ProductService} from "./services/product.service";
+import {CartService} from "./services/cart.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [ProductService]
 })
 export class AppComponent implements OnInit {
-
-  @ViewChild('orderElement', { static: true}) private orderRef!: ElementRef<HTMLElement>
   public advantages: AdvantageType[] = [
     {
       id: 1,
@@ -35,28 +35,7 @@ export class AppComponent implements OnInit {
 
   ];
 
-  public products: ProductType[] = [
-    {
-      img: 'macaroon1.png',
-      title: 'Макарун с малиной',
-      price: '1,70'
-    },
-    {
-      img: 'macaroon2.png',
-      title: 'Макарун с манго',
-      price: '1,70'
-    },
-    {
-      img: 'macaroon3.png',
-      title: 'Пирог с ванилью',
-      price: '1,70'
-    },
-    {
-      img: 'macaroon4.png',
-      title: 'Пирог с фисташками',
-      price: '1,70'
-    }
-  ]
+  public products: ProductType[] = [];
 
   public formValues = {
     productTitle: '',
@@ -64,13 +43,12 @@ export class AppComponent implements OnInit {
     phone: ''
   }
 
-  public showPresent: boolean = true;
-
-  constructor(private elementService: ElementService) {
+  public showCart: boolean = true;
+  public phone: string = '375 (29) 368-98-68';
+  constructor(private productService: ProductService, private cartService: CartService) {
   }
   ngOnInit(): void {
-    //console.log(this.orderRef.nativeElement)
-    this.elementService.setElement(this.orderRef.nativeElement)
+    this.products = this.productService.getProducts();
   }
 
   public scrollTo (target: HTMLElement): void {
@@ -80,6 +58,9 @@ export class AppComponent implements OnInit {
   public addToCard (product: ProductType, target: HTMLElement): void {
     this.scrollTo(target);
     this.formValues.productTitle = product.title.toUpperCase();
+    this.cartService.count++;
+    this.cartService.totalCost += product.price;
+    alert(`${product.title} добавлен в корзину`)
   }
 
   public createOrder () {

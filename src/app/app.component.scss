@@ -118,47 +118,7 @@
   grid-template-columns: repeat( 4, 220px);
   justify-content: space-between;
 }
-.advantages__item:hover  .advantages__item-circle {
-  background-color: #eba8b1;
-  transition: all 300ms;
-}
-.advantages__item:hover  .item-circle__number {
-  color: #821328;
-  transition: all 300ms;
-}
-.advantages__item-circle {
-  position: relative;
-  border-radius: 50%;
-  background-color: rgb(130, 19, 40);
-  width: 70px;
-  height: 70px;
-  font-size: 60px;
-  font-family: GilroyExtraBold, sans-serif;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  margin: 0 0 13px 0;
-  transition: all 300ms;
-}
-.item-circle__number {
-  position: absolute;
-  bottom: -14px;
-  left: 20px;
-  color: #fff;
-  transition: all 300ms;
-}
-.advantages__item-title {
-  font-size: 20px;
-  font-family: GilroyExtraBold, sans-serif;
-  color: rgb(51, 25, 7);
-  line-height: 2.25;
-  margin: 0 0 20px 0;
-}
-.advantages__item-text {
-  font-size: 15px;
-  font-family: GilroyMedium, sans-serif;
-  color: rgb(51, 25, 7);
-  line-height: 1.333;
-}
+
 
 .products {
   padding: 120px 0;
@@ -174,59 +134,7 @@
   grid-template-columns: repeat(4, 263px);
   justify-content: space-between;
 }
-.product__item {
-  text-align: center;
-  border-width: 2px;
-  border-color: rgb(255, 255, 255);
-  border-style: solid;
-  border-radius: 20px;
-  padding: 104px 21px 27px 21px;
-  box-sizing: border-box;
-  position: relative;
-}
-.product__image {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.product__image_img {
-  position: relative;
-  top: -62px;
-  transition: all 300ms;
-}
-.product__item:hover .product__image_img {
-  transform: scale(1.1);
-  transition: all 300ms;
-}
-.product__name {
-  font-size: 18px;
-  font-family: Tavolga, sans-serif;
-  color: rgb(255, 255, 255);
-  margin-bottom: 26px;
-}
-.product__additional {
-  display: flex;
-  justify-content: space-between;
-}
-.product__additional_text {
-  text-align: left;
-  font-size: 15px;
-  font-family: Gilroy, sans-serif;
-  color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 5px 0;
-  box-sizing: border-box;
-}
-.product__btn {
-  position: relative;
-  z-index: 5;
-  width: 130px;
-  height: 50px;
-}
+
 
 .order {
 
@@ -326,65 +234,6 @@ input, .input::placeholder {
   height: 61px;
 }
 
-.present {
-  background: radial-gradient(#71081e, #d7485c);
-  border-radius: 50%;
-  box-shadow: 0 0 12.6px 2.4px rgba(130, 19, 40, 0.5);
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 90px;
-  height: 90px;
-  z-index: 157;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-.present__popup {
-  border-width: 2px;
-  border-color: rgb(119, 10, 29);
-  border-style: solid;
-  border-radius: 10px;
-  background-color: rgb(254, 239, 238);
-  position: fixed;
-  right: 140px;
-  bottom: -68px;
-  width: 168px;
-  height: 60px;
-  z-index: 161;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  font-size: 15px;
-  font-family: GilroyMedium, sans-serif;
-  color: rgb(119, 10, 29);
-  line-height: 1.333;
-  opacity: 0;
-  transition: all 500ms;
-}
-.present__popup::after {
-  content: "";
-  width: 15px;
-  height: 15px;
-  transform: rotate(45deg);
-  border-top: 2px solid rgb(119, 10, 29);
-  border-right: 2px solid rgb(119, 10, 29);
-  position: absolute;
-  top: 21px;
-  right: -10px;
-  background-color: rgb(254, 239, 238);
-
-}
-.present:hover .present__popup {
-  transform: translateY(-108px);
-  opacity: 1;
-  transition: all 500ms;
-}
-
 
 @media screen and (max-width: 1199px) {
   .order__strawberryL {
@@ -482,13 +331,7 @@ input, .input::placeholder {
     margin: 0 auto;
   }
 
-  .advantages__item {
-    text-align: center;
-  }
 
-  .advantages__item-circle {
-    margin: 0 auto;
-  }
 }
 
 /* 425 - 767 */
@@ -565,20 +408,6 @@ input, .input::placeholder {
     column-gap: 15px;
   }
 
-  .advantages__item-circle {
-    margin: 0 auto 14px auto;
-  }
-
-  .advantages__item-title {
-    font-size: 18px;
-    margin-bottom: 20px;
-    line-height: 1;
-  }
-
-  .advantages__item-text {
-    font-size: 13px;
-    line-height: 1.385;
-  }
 
   .products {
     padding: 100px 0;
@@ -621,21 +450,6 @@ input, .input::placeholder {
 
   .advantages__items {
     padding-top: 60px;
-  }
-
-  .present {
-    right: 15px;
-    bottom: 15px;
-    width: 60px;
-    height: 60px;
-  }
-  .present__img {
-    width: 43px;
-    height: 42px;
-  }
-  .present__popup {
-    right: 100px;
-    bottom: -95px;
   }
 
 }
